@@ -136895,6 +136895,10 @@ function () {
     };
   }
 
+  User.prototype.markerContent = function () {
+    return "User Name: ".concat(this.name);
+  };
+
   return User;
 }();
 
@@ -136926,6 +136930,10 @@ function () {
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
+
+  Company.prototype.markerContent = function () {
+    return "Company Name: ".concat(this.companyName);
+  };
 
   return Company;
 }();
@@ -136964,7 +136972,7 @@ function () {
     });
     marker.addListener('click', function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: "<h1>'Hi there</h1>"
+        content: "<h2>".concat(mappable.markerContent(), "</h2>")
       });
       infoWindow.open(_this.googleMap, marker);
     });
